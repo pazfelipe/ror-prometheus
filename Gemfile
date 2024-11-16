@@ -38,6 +38,9 @@ gem "rack-cors"
 # Prometheus monitoring
 gem "prometheus-client"
 
+# Adicionando a gem oficial do Prometheus Exporter
+gem "prometheus_exporter"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]

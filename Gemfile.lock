@@ -144,6 +144,10 @@ GEM
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
+    prometheus-client (4.2.4)
+      base64
+    prometheus_exporter (2.2.0)
+      webrick
     psych (5.2.3)
       date
       stringio
@@ -225,6 +229,7 @@ GEM
     timeout (0.4.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    webrick (1.9.1)
     websocket-driver (0.7.7)
       base64
       websocket-extensions (>= 0.1.0)
@@ -242,6 +247,8 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
+  prometheus-client
+  prometheus_exporter
   puma (>= 5.0)
   rack-cors
   rails (~> 7.1.5, >= 7.1.5.1)
