@@ -52,10 +52,36 @@ curl -X POST http://localhost:3000/todos \
 
 ## Metrics
 
-Access Prometheus metrics at:
+1. Access Prometheus metrics at:
 
 ```bash
 http://localhost:3000/metrics
+```
+
+2. Example PromQL Queries:
+
+- Request count by endpoint:
+
+```plaintext
+http_server_requests_total
+```
+
+- Average response time by endpoint:
+
+```plaintext
+rate(http_server_request_duration_seconds_sum[5m]) / rate(http_server_request_duration_seconds_count[5m])
+```
+
+- Error rate:
+
+```plaintext
+sum(rate(http_server_requests_total{status=~"5.."}[5m])) / sum(rate(http_server_requests_total[5m])) * 100
+```
+
+- Active requests:
+
+```plaintext
+http_server_requests_active
 ```
 
 ## Future Enhancements
