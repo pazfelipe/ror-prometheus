@@ -5,6 +5,7 @@ services:
     build: .
     ports:
       - "3000:3000"
+      - "9394:9394"
     volumes:
       - .:/app
     environment:
@@ -32,6 +33,20 @@ services:
     volumes:
       - redis_data:/data
 
+  prometheus:
+    image: prom/prometheus:v2.50.1
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+
 volumes:
   postgres_data:
-  redis_data: 
+  redis_data:
+  prometheus_data: 
